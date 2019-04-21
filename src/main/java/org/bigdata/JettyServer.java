@@ -14,7 +14,7 @@ public class JettyServer {
         Server server = new Server(port);
         ServletHolder sh = new ServletHolder(ServletContainer.class);
         sh.setInitParameter("jersey.config.server.provider.packages",
-                "org.bigdata.res");
+                "org.bigdata.res,org.bigdata.exception");
         ServletContextHandler apiContext = new ServletContextHandler(
                 ServletContextHandler.SESSIONS);
         apiContext.addServlet(sh, "/*");
