@@ -15,6 +15,11 @@ public class JettyServer {
         ServletHolder sh = new ServletHolder(ServletContainer.class);
         sh.setInitParameter("jersey.config.server.provider.packages",
                 "org.bigdata.res,org.bigdata.exception");
+
+        //文件特性支持
+        sh.setInitParameter("jersey.config.server.provider.classnames",
+                "org.glassfish.jersey.media.multipart.MultiPartFeature");
+
         ServletContextHandler apiContext = new ServletContextHandler(
                 ServletContextHandler.SESSIONS);
         apiContext.addServlet(sh, "/*");
