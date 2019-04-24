@@ -14,7 +14,8 @@ public class JettyServer {
         Server server = new Server(port);
         ServletHolder sh = new ServletHolder(ServletContainer.class);
         sh.setInitParameter("jersey.config.server.provider.packages",
-                "org.bigdata.res,org.bigdata.exception");
+                "org.bigdata.res,org.bigdata.exception," +
+                        "org.bigdata.filter");
 
         //文件特性支持
         sh.setInitParameter("jersey.config.server.provider.classnames",
