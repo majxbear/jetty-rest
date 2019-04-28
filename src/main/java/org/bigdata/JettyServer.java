@@ -8,8 +8,6 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.glassfish.jersey.servlet.ServletContainer;
 
-import java.net.URL;
-
 
 public class JettyServer {
 
@@ -39,12 +37,10 @@ public class JettyServer {
     }
 
     private static WebAppContext createWebappContext() {
-//        URL foundUrl = Thread.currentThread().getContextClassLoader().getResource("webapp");
         WebAppContext context = new WebAppContext();
         context.setBaseResource(Resource.newClassPathResource("webapp"));
         context.setContextPath("/web");
         context.setWelcomeFiles(new String[]{"index.html"});
-//        context.setParentLoaderPriority(true);
         return context;
     }
 
