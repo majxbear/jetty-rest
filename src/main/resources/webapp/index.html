@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: '/app/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (app) {
+                $(".count").html(app['total']);
+                var apps = app['apps'];
+                for (var o in apps) {
+                    $("table").append("<tr><td>" + apps[o]['id'] + "</td>" +
+                        "<td>" + apps[o]['name'] + "</td>" +
+                        "<td>" + apps[o]['desc'] + "</td>" +
+                        "</tr>");
+                }
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+    </script>
+</head>
+<body>
+<div>
+    <h4>总共找到<span class="count"></span>个APP</h4>
+    <table border="2">
+        <tr>
+            <th>ID</th>
+            <th>APP</th>
+            <th>描述</th>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>

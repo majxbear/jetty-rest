@@ -4,7 +4,11 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.util.resource.Resource;
+import org.eclipse.jetty.webapp.WebAppContext;
 import org.glassfish.jersey.servlet.ServletContainer;
+
+import java.net.URL;
 
 
 public class JettyServer {
@@ -26,10 +30,22 @@ public class JettyServer {
         apiContext.addServlet(sh, "/*");
         apiContext.setContextPath("/");
 
+
         HandlerList handlerList = new HandlerList();
+        handlerList.addHandler(createWebappContext());
         handlerList.addHandler(apiContext);
         server.setHandler(handlerList);
         server.start();
+    }
+
+    private static WebAppContext createWebappContext() {
+//        URL foundUrl = Thread.currentThread().getContextClassLoader().getResource("webapp");
+        WebAppContext context = new WebAppContext();
+        context.setBaseResource(Resource.newClassPathResource("webapp"));
+        context.setContextPath("/web");
+        context.setWelcomeFiles(new String[]{"index.html"});
+//        context.setParentLoaderPriority(true);
+        return context;
     }
 
 }
