@@ -17,7 +17,7 @@ public class ErrorMessage {
      */
     String developerMessage;
 
-    public ErrorMessage(NotFoundException ex){
+    public ErrorMessage(NotFoundException ex) {
         this.status = Response.Status.NOT_FOUND.getStatusCode();
         this.message = ex.getMessage();
     }
