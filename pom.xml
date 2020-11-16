@@ -8,7 +8,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <jetty.version>9.3.8.v20160314</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <jersey2.version>2.19</jersey2.version>
     </properties>
 
